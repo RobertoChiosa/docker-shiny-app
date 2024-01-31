@@ -100,7 +100,7 @@ ui <- fluidPage(
 server <- function(input, output) {
   # load data
   df <- reactive({
-    read.csv("AHU_annual_reduced.csv", dec = '.', sep = ',') %>%
+    read.csv("data.csv", dec = '.', sep = ',') %>%
       mutate(
         DateTime = as.POSIXct(Datetime, format = '%Y-%m-%d %H:%M', tz = 'GMT'),
         Date = as.Date(DateTime)
