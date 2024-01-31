@@ -115,7 +115,7 @@ server <- function(input, output) {
                Date <= input$daterange[2]) %>%
       ggplot() +
       geom_histogram(
-        aes_string(y = input$variable),
+        aes(y = !!sym(input$variable)),
         color = "white",
         fill = "#337ab7",
         bins = input$bins
@@ -136,9 +136,9 @@ server <- function(input, output) {
                Date <= input$daterange[2]) %>%
       ggplot() +
       geom_line(
-        aes_string(x = "DateTime", y = input$variable),
+        aes(x = DateTime, y = !!sym(input$variable)),
         color = "#337ab7",
-        size = 1
+        linewidth = 1
       ) +
       scale_x_datetime(expand = c(0, 0))+
       theme_linedraw() +
